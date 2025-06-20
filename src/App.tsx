@@ -70,10 +70,14 @@ const Pagination: React.FC<PaginationProps> = ({
         >
           <a
             data-cy="pageLink"
-            className={`page-link block py-2 px-4 rounded-lg transition duration-300 ease-in-out
-            ${currentPage === number ? 'bg-blue-700 text-white font-bold' : 'bg-blue-500 text-white hover:bg-blue-600'}
-              ? 'bg-blue-700 text-white font-bold'
-              : 'bg-blue-500 text-white hover:bg-blue-600'}`}
+            // AQUI ESTAVA O ERRO! Expressão ternária duplicada removida.
+            // Antes: ${currentPage === number ? 'bg-blue-700 text-white font-bold' : 'bg-blue-500 text-white hover:bg-blue-600'}
+            //          ? 'bg-blue-700 text-white font-bold'
+            //          : 'bg-blue-500 text-white hover:bg-blue-600'}`
+            // Agora:
+            className={`page-link block py-2 px-4 rounded-lg transition duration-300 ease-in-out ${
+              currentPage === number ? 'bg-blue-700 text-white font-bold' : 'bg-blue-500 text-white hover:bg-blue-600'
+            }`}
             href={`#${number}`}
             onClick={() => handleClick(number)}
           >
